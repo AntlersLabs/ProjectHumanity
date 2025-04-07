@@ -88,21 +88,21 @@
     .bg-dotted-grid {
       background-image: linear-gradient(to right, hsl(var(--border) / 0.3) 1px, transparent 1px),
         linear-gradient(to bottom, hsl(var(--border) / 0.3) 1px, transparent 1px);
-  
+
     }
-  
+
     /* Dotted grid with vertical lines only */
     .bg-dotted-vertical {
       background-image: linear-gradient(to right, hsl(var(--border) / 0.3) 1px, transparent 1px);
       background-size: 24px 24px;
     }
-  
+
     /* Dotted grid with horizontal lines only */
     .bg-dotted-horizontal {
       background-image: linear-gradient(to bottom, hsl(var(--border) / 0.3) 1px, transparent 1px);
       background-size: 24px 24px;
     }
-  
+
     /* Dotted border pattern - creates a border of dots around sections */
     .bg-dotted-border {
       background-image: linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
@@ -111,7 +111,7 @@
       background-position: -1px -1px;
       border: 1px solid hsl(var(--border));
     }
-  
+
 
   }
 
@@ -126,7 +126,7 @@
   }
 
 :root {
-    --background: oklch(1 0 0);
+    --background: oklch(1 0.0093 99.98);
     --foreground: oklch(0.145 0 0);
     --card: oklch(1 0 0);
     --card-foreground: oklch(0.145 0 0);
@@ -207,7 +207,7 @@
 }
 
 .border-top-b{
-    @apply border-t border-b 
+    @apply border-t border-b
 }
 
 .border-pattern{
