@@ -1,15 +1,16 @@
-import { Search, Bell, Menu, ChevronRight } from "lucide-react"
+import {  ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Link } from "@inertiajs/react"
 import Default from "@/layouts/Default"
-
-export default function Home() {
+import { Post } from "@/types/data"
+import moment from 'moment'
+export default function Home({breakings, topstories, featureds}: {breakings: Post[], topstories: Post[], featureds: Post[]}) {
   return (
     <Default>
-    
+
       <main className="flex-1 border-top-b ">
         <section className="container mx-auto px-4 md:px-6">
             <div className=" border-l border-r ">
@@ -26,102 +27,80 @@ export default function Home() {
             <div className=" border-l border-r ">
             <div className=" p-4 grid gap-8 lg:grid-cols-3">
               <div className="lg:col-span-2 space-y-8">
-                <div className="relative overflow-hidden rounded-lg">
-                  <img
-                    src="/placeholder.svg?height=600&width=1200"
-                    width={1200}
-                    height={600}
-                    alt="Featured news"
-                    className="aspect-[16/9] w-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-0 p-6 md:p-8">
-                    <Badge className="mb-2">Breaking</Badge>
-                    <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2">
-                      Global Leaders Gather for Climate Summit to Address Environmental Challenges
-                    </h1>
-                    <p className="text-white/90 mb-4 max-w-[600px] hidden md:block">
-                      World leaders from over 190 countries convene to discuss urgent climate action and sustainable
-                      development goals.
-                    </p>
-                    <div className="flex items-center gap-2">
-                      <div className="h-8 w-8 rounded-full bg-muted" />
-                      <div>
-                        <p className="text-sm font-medium text-white">Sarah Johnson</p>
-                        <p className="text-xs text-white/70">2 hours ago</p>
+               {breakings.map((post) => (
+                    <div key={post.id} className="relative overflow-hidden rounded-lg">
+                    <img
+                      src={'storage/' + post.image}
+                      width={1200}
+                      height={600}
+                      alt={post.slug}
+                      className="aspect-[16/9] w-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-0 p-6 md:p-8">
+                      <Badge className="mb-2">Breaking</Badge>
+                      <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2">
+                        {post.title}
+                      </h1>
+                      <p className="text-white/90 mb-4 max-w-[600px] hidden md:block">
+                       {post.title}
+                      </p>
+                      <div className="flex items-center gap-2">
+                        <div>
+                          <p className="text-sm font-medium text-white">Anonymous</p>
+                          <p className="text-xs text-white/70">{moment(post.created_at).fromNow()}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+               ))}
+
                 <div className="grid gap-8 md:grid-cols-2">
-                  <div className="space-y-4 bg-background p-6 rounded-lg border ">
-                    <img
-                      src="/placeholder.svg?height=400&width=600"
-                      width={600}
-                      height={400}
-                      alt="News img"
-                      className="aspect-video w-full rounded-lg object-cover"
-                    />
-                    <Badge variant="outline">Technology</Badge>
-                    <h3 className="text-xl font-bold">Tech Giant Unveils Revolutionary AI Assistant for Home Use</h3>
-                    <p className="text-muted-foreground">
-                      The new AI system promises to transform how people interact with smart home devices.
-                    </p>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <span>Michael Chen</span>
-                      <span>•</span>
-                      <span>4 hours ago</span>
-                    </div>
-                  </div>
-                  <div className="space-y-4 bg-background p-6 rounded-lg border ">
-                    <img
-                      src="/placeholder.svg?height=400&width=600"
-                      width={600}
-                      height={400}
-                      alt="News img"
-                      className="aspect-video w-full rounded-lg object-cover"
-                    />
-                    <Badge variant="outline">Business</Badge>
-                    <h3 className="text-xl font-bold">Global Markets React to Central Bank's Interest Rate Decision</h3>
-                    <p className="text-muted-foreground">
-                      Investors closely monitor economic indicators as central banks adjust monetary policy.
-                    </p>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <span>Jessica Williams</span>
-                      <span>•</span>
-                      <span>6 hours ago</span>
-                    </div>
-                  </div>
+                    {featureds.map((post) => (
+                        <div key={post.id} className="space-y-4 bg-background p-6 rounded-lg border ">
+                        <img
+                          src={'storage/' + post.image}
+                          width={600}
+                          height={400}
+                          alt={post.slug}
+                          className="aspect-video w-full rounded-lg object-cover"
+                        />
+                        <Badge variant="outline">{post.category?.name}</Badge>
+                        <h3 className="text-xl font-bold">{post.title}</h3>
+                        <p className="text-muted-foreground">
+                         {post.summary}
+                        </p>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <span>Anonymous</span>
+                          <span>•</span>
+                          <span>{moment(post.created_at).fromNow()}</span>
+                        </div>
+                      </div>
+                    ))}
+
+
                 </div>
               </div>
               <div className="space-y-8">
                 <div className="rounded-lg border p-6 bg-background">
                   <h3 className="text-lg font-bold mb-4">Top Stories</h3>
                   <div className="space-y-6 divide-y">
-                    {[1, 2, 3, 4, 5].map((item) => (
-                      <div key={item} className={item > 1 ? "pt-6" : ""}>
+                    {topstories.map((post) => (
+                      <div key={post.id} className={post.id > 1 ? "pt-6" : ""}>
                         <div className="flex items-start gap-4">
                           <img
-                            src={`/placeholder.svg?height=100&width=100&text=${item}`}
+                            src={'storage/' + post.image}
                             width={80}
                             height={80}
-                            alt={`Top story ${item}`}
+                            alt={post.slug}
                             className="rounded-md object-cover"
                           />
                           <div>
                             <Badge variant="secondary" className="mb-1">
-                              {["Politics", "Sports", "Health", "Science", "Entertainment"][item - 1]}
+                              {post.category?.name}
                             </Badge>
                             <h4 className="font-medium line-clamp-2">
-                              {
-                                [
-                                  "New Healthcare Bill Passes Senate Vote",
-                                  "National Team Advances to Championship Finals",
-                                  "Breakthrough in Cancer Research Announced",
-                                  "Space Agency Reveals Plans for Mars Mission",
-                                  "Award-Winning Film Director Announces New Project",
-                                ][item - 1]
-                              }
+                             {post.title}
                             </h4>
                             <p className="text-xs text-muted-foreground mt-1">
                               {Math.floor(Math.random() * 12) + 1} hours ago
@@ -154,9 +133,9 @@ export default function Home() {
           <div className='container mx-auto px-4 md:px-6'>
             <div className="p-8 border-l border-r border-t-0 border-b-0 ">
 
-           
-            
-        
+
+
+
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-bold tracking-tight">Categories</h2>
             <Button variant="ghost" size="sm">
@@ -348,7 +327,7 @@ export default function Home() {
           </div>
         </section>
       </main>
-      
+
     </Default>
   )
 }

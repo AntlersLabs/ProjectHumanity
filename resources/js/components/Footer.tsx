@@ -9,12 +9,12 @@ const Footer = () => {
         <div className="container mx-auto  px-4 md:px-6">
         <div className='border-pattern'>
 
-           
+
           <div className=" px-4 py-10 grid gap-8 sm:grid-cols-2 md:grid-cols-4">
             <div>
-              <h3 className="text-lg font-medium mb-4">NewsPortal</h3>
+              <h3 className="text-lg font-medium mb-4">Projecy Humanity by Antlers</h3>
               <p className="text-sm text-muted-foreground mb-4">
-                Delivering accurate, timely, and engaging news coverage from around the world.
+                In a collective collaboration with Antlers Labs, Adons Tech, PacaLabs, Grand Line: Once Piece and the people of Bangladesh.
               </p>
               <div className="flex gap-4">
                 <Button variant="ghost" size="icon" className="rounded-full">
