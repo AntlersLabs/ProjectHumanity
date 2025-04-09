@@ -14,26 +14,15 @@ const Navbar = () => {
       <Link href="#" className="flex items-center space-x-2">
         <span className="text-xl font-bold">Project Humanity</span>
       </Link>
-      {/* <nav className="gap-6 hidden md:flex">
+      <nav className="gap-6 hidden md:flex">
         <Link href="#" className="text-sm font-medium hover:underline underline-offset-4">
           Home
         </Link>
-        <Link href="#" className="text-sm font-medium hover:underline underline-offset-4">
-          Politics
+        <Link href={route('news')} prefetch className="text-sm font-medium hover:underline underline-offset-4">
+          News
         </Link>
-        <Link href="#" className="text-sm font-medium hover:underline underline-offset-4">
-          Business
-        </Link>
-        <Link href="#" className="text-sm font-medium hover:underline underline-offset-4">
-          Technology
-        </Link>
-        <Link href="#" className="text-sm font-medium hover:underline underline-offset-4">
-          Entertainment
-        </Link>
-        <Link href="#" className="text-sm font-medium hover:underline underline-offset-4">
-          Sports
-        </Link>
-      </nav> */}
+
+      </nav>
     </div>
     <div className="flex items-center gap-4">
       <form className="hidden lg:flex relative">

@@ -10,7 +10,9 @@ export interface Post{
     title: string;
     slug: string;
     image: string;
+    image_url: string;
     summary: string;
+    content: string;
     tags: string[];
     keywords: string[];
     breaking: boolean;
