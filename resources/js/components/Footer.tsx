@@ -10,10 +10,10 @@ const Footer = () => {
         <div className='border-pattern'>
 
 
-          <div className=" px-4 py-10 grid gap-8 sm:grid-cols-2 md:grid-cols-4">
+          <div className=" px-4 py-10 grid items-center justify-center  text-center ">
             <div>
               <h3 className="text-lg font-medium mb-4">Projecy Humanity by Antlers</h3>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-lg text-muted-foreground mb-4">
                 In a collective collaboration with Antlers Labs, Adons Tech, PacaLabs, Grand Line: Once Piece and the people of Bangladesh.
               </p>
               <div className="flex gap-4">
@@ -72,69 +72,7 @@ const Footer = () => {
                 </Button>
               </div>
             </div>
-            <div>
-              <h3 className="text-lg font-medium mb-4">Categories</h3>
-              <nav className="flex flex-col gap-2">
-                <Link href="#" className="text-sm text-muted-foreground hover:underline">
-                  Politics
-                </Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:underline">
-                  Business
-                </Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:underline">
-                  Technology
-                </Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:underline">
-                  Entertainment
-                </Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:underline">
-                  Sports
-                </Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:underline">
-                  Health
-                </Link>
-              </nav>
-            </div>
-            <div>
-              <h3 className="text-lg font-medium mb-4">Company</h3>
-              <nav className="flex flex-col gap-2">
-                <Link href="#" className="text-sm text-muted-foreground hover:underline">
-                  About Us
-                </Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:underline">
-                  Careers
-                </Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:underline">
-                  Contact
-                </Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:underline">
-                  Advertise
-                </Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:underline">
-                  Press Room
-                </Link>
-              </nav>
-            </div>
-            <div>
-              <h3 className="text-lg font-medium mb-4">Support</h3>
-              <nav className="flex flex-col gap-2">
-                <Link href="#" className="text-sm text-muted-foreground hover:underline">
-                  Help Center
-                </Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:underline">
-                  Privacy Policy
-                </Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:underline">
-                  Terms of Service
-                </Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:underline">
-                  Cookie Policy
-                </Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:underline">
-                  Accessibility
-                </Link>
-              </nav>
-            </div>
+          
           </div>
           <div className="px-4 md:px-6 mt-8 border-t  pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-muted-foreground">

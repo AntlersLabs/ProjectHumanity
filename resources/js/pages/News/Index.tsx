@@ -1,4 +1,4 @@
-import { Search, Filter, Calendar, Clock, ArrowUpRight } from "lucide-react"
+import { Search, Filter, Calendar, Clock, ArrowUpRight, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Head, Link, router } from "@inertiajs/react"
 import Default from "@/layouts/Default"
 import { Category, Post } from "@/types/data"
@@ -33,6 +34,7 @@ export default function NewsPage({news, categories}: NewsPageProps) {
   const [dateTo, setDateTo] = useState("")
   const [sortBy, setSortBy] = useState("latest")
   const [currentPage, setCurrentPage] = useState(news.current_page)
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false)
 
   // Debounced search function
   const debouncedSearch = useCallback(
@@ -366,13 +368,81 @@ export default function NewsPage({news, categories}: NewsPageProps) {
           </TabsContent>
         </Tabs>
 
-        {/* Mobile filters button */}
-        <div className="fixed bottom-4 right-4 md:hidden">
-          <Button size="lg" className="rounded-full shadow-lg">
-            <Filter className="mr-2 h-4 w-4" />
-            Filters
-          </Button>
-        </div>
+        {/* Mobile filters */}
+        <Sheet open={isFiltersOpen} onOpenChange={setIsFiltersOpen}>
+          <SheetTrigger asChild>
+            <Button size="lg" className="fixed bottom-4 right-4 rounded-full shadow-lg md:hidden">
+              <Filter className="mr-2 h-4 w-4" />
+              Filters
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="bottom" className="h-[80vh]">
+            <SheetHeader>
+              <SheetTitle>Filters</SheetTitle>
+            </SheetHeader>
+            <div className="mt-4 space-y-6 px-4 md:px-6">
+              {/* Search */}
+              <div className="space-y-2">
+                <h3 className="text-sm font-medium">Search</h3>
+                <Input
+                  placeholder="Search articles..."
+                  value={searchQuery}
+                  onChange={handleSearch}
+                  className="w-full"
+                />
+              </div>
+
+              {/* Categories */}
+              <div className="space-y-2">
+                <h3 className="text-sm font-medium">Categories</h3>
+                <div className="space-y-2">
+                  {categories.map((category) => (
+                    <div key={category.id} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={`category-mobile-${category.id}`}
+                        checked={selectedCategories.includes(category.id)}
+                        onCheckedChange={() => handleCategoryToggle(category.id)}
+                      />
+                      <label
+                        htmlFor={`category-mobile-${category.id}`}
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        {category.name}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Sort */}
+              <div className="space-y-2">
+                <h3 className="text-sm font-medium">Sort By</h3>
+                <Select value={sortBy} onValueChange={handleSort}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Sort by" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="latest">Latest</SelectItem>
+                    <SelectItem value="oldest">Oldest</SelectItem>
+                    <SelectItem value="title_asc">Title A-Z</SelectItem>
+                    <SelectItem value="title_desc">Title Z-A</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Apply Filters Button */}
+              <Button 
+                className="w-full" 
+                onClick={() => {
+                  applyFilters(1)
+                  setIsFiltersOpen(false)
+                }}
+              >
+                Apply Filters
+              </Button>
+            </div>
+          </SheetContent>
+        </Sheet>
       </div>
     </div>
   </div>
