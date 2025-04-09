@@ -107,7 +107,7 @@ export default function Home({ breakings, topstories, featureds, latest }: { bre
                                         <p className="text-muted-foreground mb-4 text-sm">Get the latest news delivered directly to your inbox.</p>
                                         <form className="space-y-3">
                                             <Input type="email" placeholder="Your email address" />
-                                            <Button className="w-full">Subscribe</Button>
+                                            <Button className="w-full" variant={'destructive'}>Subscribe</Button>
                                         </form>
                                     </div>
                                 </div>
