@@ -8,11 +8,12 @@ use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+   
 
     /**
      * The attributes that are mass assignable.
@@ -47,6 +48,17 @@ class User extends Authenticatable implements FilamentUser
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Set the user's password with proper hashing.
+     */
+    public function setPasswordAttribute($value)
+    {
+        if ($value && !Hash::isHashed($value)) {
+            $this->attributes['password'] = Hash::make($value);
+        }
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
         return true;
