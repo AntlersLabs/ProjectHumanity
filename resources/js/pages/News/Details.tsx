@@ -1,4 +1,4 @@
-import { ArrowLeft, Clock } from "lucide-react"
+import { ArrowLeft, Clock, Share2, Twitter, Facebook } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Head, Link } from "@inertiajs/react"
@@ -58,6 +58,35 @@ export default function Details({ article }: DetailsProps) {
             </div>
             <h1 className="text-4xl font-bold mb-4">{article.title}</h1>
             <p className="text-xl text-muted-foreground">{article.summary}</p>
+          </div>
+
+          {/* Social Share Buttons */}
+          <div className="flex items-center gap-4 my-6">
+            <span className="text-sm text-muted-foreground flex items-center">
+              <Share2 className="mr-2 h-4 w-4" />
+              Share
+            </span>
+            <div className="flex gap-3">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:text-[#1DA1F2]"
+                onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(window.location.href)}`, '_blank')}
+              >
+                <Twitter className="h-5 w-5" />
+                <span className="sr-only">Share on Twitter</span>
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:text-[#4267B2]"
+                onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank')}
+              >
+                <Facebook className="h-5 w-5" />
+                <span className="sr-only">Share on Facebook</span>
+              </Button>
+             
+            </div>
           </div>
 
           {/* Featured Image */}
