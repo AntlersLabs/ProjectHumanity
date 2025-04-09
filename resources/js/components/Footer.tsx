@@ -136,7 +136,7 @@ const Footer = () => {
               </nav>
             </div>
           </div>
-          <div className="mt-8 border-t  pt-8 flex flex-col md:flex-row justify-between items-center">
+          <div className="px-4 md:px-6 mt-8 border-t  pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-muted-foreground">
               {new Date().getFullYear()} Antlers Labs. All rights reserved.
             </p>

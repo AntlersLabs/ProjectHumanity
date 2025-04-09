@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { Link } from "@inertiajs/react"
-import { Bell, Menu, X } from "lucide-react"
+import { Bell, Menu, X, Sun, Moon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { useAppearance } from '@/hooks/use-appearance'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const { appearance, updateAppearance } = useAppearance()
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background border-b px-4 md:px-6">
@@ -24,6 +26,14 @@ const Navbar = () => {
           </nav>
         </div>
         <div className="flex items-center gap-4">
+          <Button variant="ghost" size="icon" onClick={() => updateAppearance(appearance === 'dark' ? 'light' : 'dark')}>
+            {appearance === 'dark' ? (
+              <Sun className="h-5 w-5" />
+            ) : (
+              <Moon className="h-5 w-5" />
+            )}
+            <span className="sr-only">Toggle theme</span>
+          </Button>
           <Button variant="ghost" size="icon" className="hidden md:flex">
             <Bell className="h-5 w-5" />
             <span className="sr-only">Notifications</span>

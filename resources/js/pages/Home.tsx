@@ -6,10 +6,18 @@ import { ChevronRight } from 'lucide-react';
 import Default from '@/layouts/Default';
 import { Post } from '@/types/data';
 import moment from 'moment';
-import { Link } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 export default function Home({ breakings, topstories, featureds, latest }: { breakings: Post[]; topstories: Post[]; featureds: Post[], latest: Post[] }) {
   return (
     <Default>
+      <Head>
+        <title>Home</title>
+        <meta name="description" content="Home page of Project Humanity" />
+        <meta name="keywords" content="Project Humanity, news, articles, updates" />
+        <meta name="author" content="Project Humanity" />
+        <meta name="robots" content="index, follow" />
+        <meta name="url" content={window.location.href} />
+      </Head>
       <main className="border-top-b flex-1">
         <section className="container mx-auto px-4 md:px-6">
           <div className="border-r border-l">

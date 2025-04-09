@@ -33,7 +33,7 @@ export default function Details({ article }: DetailsProps) {
             <meta name="twitter:site" content="@ProjectHumanity" />
             <meta name="twitter:title" content={article.title} />
             <meta name="twitter:description" content={article.summary} />
-            <meta name="twitter:image" content={article.image} />
+            <meta name="twitter:image" content={article.image_url} />
         </Head>
       <div className="container mx-auto px-4 md:px-6">
       
