@@ -57,7 +57,7 @@ export default function Details({ article }: DetailsProps) {
               </div>
             </div>
             <h1 className="text-4xl font-bold mb-4">{article.title}</h1>
-            <p className="text-xl text-muted-foreground">{article.summary}</p>
+          
           </div>
 
           {/* Social Share Buttons */}
