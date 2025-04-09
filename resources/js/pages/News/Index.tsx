@@ -256,7 +256,7 @@ export default function NewsPage({news, categories}: NewsPageProps) {
                 <Card key={article.id} className="overflow-hidden bg-background">
                   <div className="aspect-video w-full overflow-hidden">
                     <img
-                      src={article.image || "/placeholder.svg"}
+                      src={article.image_url}
                       alt={article.title}
                       width={600}
                       height={400}
@@ -325,7 +325,7 @@ export default function NewsPage({news, categories}: NewsPageProps) {
                   <Card key={article.id} className="overflow-hidden bg-background">
                     <div className="aspect-video w-full overflow-hidden">
                       <img
-                        src={article.image || "/placeholder.svg"}
+                        src={article.image_url}
                         alt={article.title}
                         width={600}
                         height={400}
