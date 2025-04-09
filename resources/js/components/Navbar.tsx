@@ -23,6 +23,9 @@ const Navbar = () => {
             <Link href={route('news')} prefetch className="text-sm font-medium hover:underline underline-offset-4">
               News
             </Link>
+            <Link href={route('donations')} prefetch className="text-sm font-medium hover:underline underline-offset-4">
+              Donations
+            </Link>
           </nav>
         </div>
         <div className="flex items-center gap-4">
@@ -64,6 +67,13 @@ const Navbar = () => {
             className="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent hover:text-accent-foreground"
           >
             News
+          </Link>
+          <Link 
+            href={route('donations')} 
+            prefetch
+            className="block px-3 py-2 rounded-md text-base font-medium hover:bg-accent hover:text-accent-foreground"
+          >
+            Donations
           </Link>
           <div className="px-3 py-2">
             <Button className="w-full">Subscribe</Button>
