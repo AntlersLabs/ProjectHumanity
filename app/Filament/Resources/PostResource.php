@@ -6,6 +6,7 @@ use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Post;
 use Filament\Forms;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -39,7 +40,7 @@ class PostResource extends Resource
                     TextInput::make('slug'),
                 Forms\Components\FileUpload::make('image')
                     ->image(),
-                Forms\Components\Textarea::make('content')
+                RichEditor::make('content')
                     ->required()
                     ->columnSpanFull(),
                 Forms\Components\Textarea::make('summary')

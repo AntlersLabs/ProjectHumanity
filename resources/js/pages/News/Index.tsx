@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Link, router } from "@inertiajs/react"
+import { Head, Link, router } from "@inertiajs/react"
 import Default from "@/layouts/Default"
 import { Category, Post } from "@/types/data"
 import moment from "moment"
@@ -124,6 +124,14 @@ export default function NewsPage({news, categories}: NewsPageProps) {
 
   return (
    <Default>
+    <Head>
+      <title>News</title>
+      <meta name="description" content="Browse all our latest news articles and updates" />
+      <meta name="keywords" content="news, articles, updates" />
+      <meta name="author" content="Project Humanity" />
+      <meta name="robots" content="index, follow" />
+      
+    </Head>
      <div className=" container mx-auto px-4 md:px-6 flex  flex-col bg-dotted-grid  ">
 <div className=" border-pattern">
 

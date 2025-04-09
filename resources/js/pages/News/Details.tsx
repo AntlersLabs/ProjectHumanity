@@ -1,7 +1,7 @@
 import { ArrowLeft, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Link } from "@inertiajs/react"
+import { Head, Link } from "@inertiajs/react"
 import Default from "@/layouts/Default"
 
 import moment from "moment"
@@ -14,6 +14,27 @@ interface DetailsProps {
 export default function Details({ article }: DetailsProps) {
   return (
     <Default>
+        <Head>
+            <title>{article.title}</title>
+            <meta name="description" content={article.summary} />
+            <meta name="keywords" content="news, articles, updates" />
+            <meta name="author" content="Project Humanity" />
+            <meta name="robots" content="index, follow" />
+            <meta name="url" content={window.location.href} />
+            <meta name="image" content={article.image} />
+            <meta name="og:title" content={article.title} />
+            <meta name="og:description" content={article.summary} />
+            <meta name="og:type" content="article" />
+            <meta name="og:url" content={window.location.href} />
+            <meta name="og:image" content={article.image_url} />
+            <meta name="og:site_name" content="Project Humanity" />
+            <meta name="og:locale" content="en_US" />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:site" content="@ProjectHumanity" />
+            <meta name="twitter:title" content={article.title} />
+            <meta name="twitter:description" content={article.summary} />
+            <meta name="twitter:image" content={article.image} />
+        </Head>
       <div className="container mx-auto px-4 md:px-6">
       
             <div className="border-pattern py-12 px-4 md:px-6">
@@ -49,7 +70,23 @@ export default function Details({ article }: DetailsProps) {
           </div>
 
           {/* Article Content */}
-          <div className="mt-8 prose prose-lg dark:prose-invert" dangerouslySetInnerHTML={{ __html: article.content }} />
+          <div 
+            className="mt-8 prose prose-slate max-w-none dark:prose-invert
+              prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
+              prose-p:text-base prose-p:leading-7 prose-p:my-4
+              prose-a:text-primary hover:prose-a:text-primary/80
+              prose-strong:font-bold prose-strong:text-foreground
+              prose-em:italic
+              prose-ul:list-disc prose-ul:pl-6 prose-ul:my-4
+              prose-ol:list-decimal prose-ol:pl-6 prose-ol:my-4
+              prose-li:my-2
+              prose-blockquote:border-l-4 prose-blockquote:border-primary/20 prose-blockquote:pl-4 prose-blockquote:italic
+              prose-img:rounded-lg prose-img:my-8
+              prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded
+              prose-pre:bg-muted prose-pre:p-4 prose-pre:rounded-lg
+            " 
+            dangerouslySetInnerHTML={{ __html: article.content }} 
+          />
           {/* Article Footer */}
           <div className="mt-12 border-t pt-6">
             <div className="flex items-center justify-between">
