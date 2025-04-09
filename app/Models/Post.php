@@ -18,8 +18,15 @@ class Post extends Model
     public function getImageUrlAttribute()
     {
         if (!$this->image) {
-            return '/placeholder.svg';
+            return asset('placeholder.svg');
         }
-        return Storage::url($this->image);
+
+        // Check if the image is a full URL
+        if (filter_var($this->image, FILTER_VALIDATE_URL)) {
+            return $this->image;
+        }
+
+        // If it's a storage path, generate the full URL
+        return Storage::disk('public')->url($this->image);
     }
 }

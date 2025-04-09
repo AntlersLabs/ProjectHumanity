@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Livewire\Livewire;
+use Illuminate\Support\Facades\Storage;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -60,7 +61,11 @@ class AppServiceProvider extends ServiceProvider
     {
         if ($this->app->environment('production')) {
             URL::forceScheme('https');
+            $this->app['request']->server->set('HTTPS', true);
+            
+            // Force storage URLs to use HTTPS
+            Storage::disk('public')->url('');
+            URL::forceRootUrl(config('app.url'));
         }
-
     }
 }
