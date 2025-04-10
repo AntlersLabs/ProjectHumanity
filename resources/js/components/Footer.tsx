@@ -12,7 +12,7 @@ const Footer = () => {
 
           <div className=" px-4 py-10 grid items-center justify-center  text-center ">
             <div>
-              <h3 className="text-lg font-medium mb-4">Projecy Humanity by Antlers</h3>
+              <h3 className="text-lg font-medium mb-4">Project Humanity by Antlers Labs</h3>
               <p className="text-lg text-muted-foreground mb-4">
                 In a collective collaboration with Antlers Labs, Adons Tech, PacaLabs, Grand Line: Once Piece and the people of Bangladesh.
               </p>
